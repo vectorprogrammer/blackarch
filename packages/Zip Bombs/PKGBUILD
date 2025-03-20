@@ -1,1 +1,11 @@
-
+pkgname=('1148857344 quettabytes preserved in zip.7z', '0.7z', '0 (old).7z', '0.zip', '42.zip', '1148857344 quettabytes.zip', 'r.zip','zbxl_2.7z', '40.265 petabyte zipbomb.zip','1T.287.zip')
+pkgver=0
+pkgrel=0
+groups=('blackarch','blackarch-misc')
+pkgdesc='A collection of well known zip bombs or zip archive bombs for overflooding a systems memory and disk space'
+url='https://github.com/marco48vx/my-zip-bomb-collection'
+source='git+github.com/marco48vx/my-zip-bomb-collection.git'
+sha512sums=none
+package() {
+  install -Dm 644 "/zipbombs.zip"
+}
