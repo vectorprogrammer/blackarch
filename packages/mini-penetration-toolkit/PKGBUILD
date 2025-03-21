@@ -1,0 +1,12 @@
+pkgname='Mini-Penetration-Testing-Toolkit'
+pkgver=0
+pkgrel=0
+pkgdesc='small penetration testing automated toolkit'
+arch=('any')
+url='https://github.com/MalikHamza7/Mini-Penetration-Testing-Toolkit'
+depends=('bash')
+source='git+https://github.com/MalikHamza7/Mini-Penetration-Testing-Toolkit.git'
+package() {
+ cd $pkgname
+ install -Dm755 mini-pentest.sh "/usr/bin/mini-penetration-toolkit"
+}
