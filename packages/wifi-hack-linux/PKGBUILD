@@ -1,1 +1,17 @@
+pkgname=WIFI-HACK-LINUX
+pkgver=1
+pkgdir=/usr/bin
+pkgrel=1
+arch=('any')
+url=https://github.com/trfahim/WIFI-HACK-LINUX 
+makedepends=('git','python','python-setuptools')
+source=('git+https://github.com/trfahim/WIFI-HACK-LINUX.git')
 
+build() {
+ cd $pkgname
+ python setup.py build
+}
+package() {
+ cd $pkgname
+ python setup.py install --root=$pkgdir --optimize=1
+}
