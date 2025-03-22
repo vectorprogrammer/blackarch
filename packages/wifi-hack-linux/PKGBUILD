@@ -1,6 +1,5 @@
 pkgname=WIFI-HACK-LINUX
 pkgver=1
-pkgdir=/usr/bin
 pkgrel=1
 arch=('any')
 url=https://github.com/trfahim/WIFI-HACK-LINUX 
