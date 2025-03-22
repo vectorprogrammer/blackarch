@@ -1,0 +1,16 @@
+pkgname=beezlebub
+pkgdesc="A secure low code honeypot framework, leveraging AI for System Virtualization."
+arch=('x86_64')
+url="https://github.com/mariocandela/beezlebub"
+license=('MIT')
+depends=('go')
+source=("git+https://github.com/mariocandela/beezlebub.git")
+
+build() {
+  cd "$srcdir/beezlebub"
+  go build -o "$pkgdir/usr/bin/beezlebub"
+}
+
+package() {
+  install -Dm755 "$srcdir/beezlebub/beezlebub" "$pkgdir/usr/bin/beezlebub"
+}
