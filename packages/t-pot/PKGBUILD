@@ -1,0 +1,14 @@
+pkgname=t-pot
+_pkgname=tpotce
+pkgdesc="All in one honeypot tool"
+url="https://github.com/telekom-security/tpotce"
+arch=("x86_64")
+depends=("gcc","git")
+license=("GPL3")
+build() {
+  cd $_pkgname
+  gcc -o $_pkgname
+package(){
+ cd $_pkgname
+ install -Dm755 $_pkgname "${pkgdir}/usr/bin/${pkgname}"
+}
