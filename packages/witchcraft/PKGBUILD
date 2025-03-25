@@ -1,0 +1,18 @@
+pkgname=witchcraft 
+arch=('x86_64')
+url="https://github.com/cosmic-zip/${pkgname}"
+license=('MIT')
+depends=('rust')
+makedepends=('rust' 'cargo' 'git')
+source=("git+https://github.com/cosmic-zip/witchcraft.git")
+sha256sums=('SKIP') # Will be generated on first build
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  cargo build --release --locked
+}
+
+package() {
+  cd "${srcdir}/${pkgname}/target/release"
+  install -Dm755 my-rust-app "${pkgdir}/usr/bin/${pkgname}"
+}
