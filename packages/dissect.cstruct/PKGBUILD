@@ -1,0 +1,25 @@
+pkgname=dissect.cstruct
+pkgdesc="A tool that parsers C-like structures"
+arch=('any')
+groups=('blackarch' 'blackarch-forensic')
+url='https://github.com/fox-it/dissect.cstruct'
+license=('Apache-2.0')
+depends=('python')
+makedepends=('git' 'python-pip' 'python-build' 'python-installer'
+             'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+url=("github.com/fox-it/dissect.cstruct")
+prepare() {
+  git -C "$srcdir/$_pkgname" clean -dfx
+}
+
+build() {
+  cd $_pkgname
+
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd $_pkgname
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
