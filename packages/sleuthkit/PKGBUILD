@@ -1,0 +1,20 @@
+pkgname=sleuthkit
+pkgdesc='Forensic command tool'
+groups=('blackarch','blackarch-forensic')
+url=('https://github.com/sleuthkit/sleuthkit')
+arch=('x86_64')
+license=('GPL')
+depends=('zlib','libewf','libvshadow','libvhidi','afflib','exiv2','postgresql-libs')
+makedepends=('autoconf','automake','git','libtool','postgresql')
+source=('git+https.git')
+build() {
+  cd "$pkgname"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$pkgname"
+  make DESTDIR="$pkgdir/" install
+}
