@@ -1,0 +1,22 @@
+# Maintainer: Your Name <your.email@example.com>
+pkgname=bustr
+pkgver=0.1.0 # Replace with the actual version if known
+pkgrel=1
+pkgdesc="Binary Analysis TUI"
+arch=('x86_64') # Or other supported architectures
+url="https://github.com/trumank/bustr"
+license=('MIT') # Check the repository for the correct license
+depends=('glibc') # Add any dependencies if needed
+groups=("blackarch","blackarch-binary","blackarch-scanner")
+makedepends=('rust' 'cargo')
+source=("git+https://github.com/trumank/bustr.git")
+sha256sums=('SKIP') # We'll update this later
+
+build() {
+  cd "${srcdir}/bustr"
+  cargo build --release
+}
+
+package() {
+  install -Dm755 "${srcdir}/bustr/target/release/bustr" "${pkgdir}/usr/bin/bustr"
+}
