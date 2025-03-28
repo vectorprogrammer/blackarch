@@ -1,0 +1,16 @@
+pkgname=forwarder
+arch=('x86_64') #Or your architecture.
+url="https://github.com/example/mygoprogram"
+license=('MPL') #Replace with the correct license.makedepends=('go')
+source=("git+https://github.com/example/mygoprogram.git")
+sha256sums=('SKIP') #We will change this later.
+groups=('blackarch','blackarch-recon','blackarch-scanner','blackarch-wireless')
+pkgdesc='Forwarder is a production-ready, fast MITM proxy with PAC support.'
+build()
+  cd "${srcdir}/mygoprogram"
+  go build -o "${pkgdir}/usr/bin/mygoprogram" .
+}
+
+package() {
+  install -Dm755 "${srcdir}/mygoprogram/mygoprogram" "${pkgdir}/usr/bin/mygoprogram"
+}
