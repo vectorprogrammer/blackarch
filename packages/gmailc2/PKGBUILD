@@ -1,0 +1,15 @@
+pkgname=gmailc2
+pkgdesc="an SMTP malware that evades detection"
+arch=('any') # Python is architecture-independent
+url="https://github.com/machine1337/gmailc2"
+license=('GPL3') # Check the actual license
+groups=('blackarch','blackarch-malware')
+depends=('python') # Python is a dependency
+source=("git+https://github.com/machine1337/gmailc2.git")
+sha256sums=('SKIP') # Skip checksum checks for git sources
+
+package() {
+  cd "$srcdir/gmailc2"
+  install -Dm755 gmailc2.py "$pkgdir/usr/bin/gmailc2"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/gmailc2/README.md"
+}
