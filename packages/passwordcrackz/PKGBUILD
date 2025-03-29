@@ -1,0 +1,16 @@
+pkgname=passwordcrackz 
+pkgdesc="dictionary attack cracking"
+arch=('x86_64')
+url="https://github.com/CheezCrunch/${pkgname}"
+license=('MIT')
+depends=()
+makedepends=('go')
+source=("git+${url}.git")
+build() {
+  cd "${srcdir}/${pkgname}"
+  go build -o "${pkgname}"
+}
+package() {
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
